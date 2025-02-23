@@ -114,9 +114,11 @@ vim.opt.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+-- vim.schedule(function()
+--   vim.opt.clipboard = 'unnamedplus'
+-- end)
+
+vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -127,6 +129,9 @@ vim.opt.undofile = true
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- Case-insensitive for filename completion
+vim.opt.wildignorecase = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
@@ -154,14 +159,19 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 5
 
 vim.opt.linebreak = true
 vim.opt.spell = true
 
+-- Concealing for links in org mode
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = 'nc'
+
 -- Neovide Section
 if vim.g.neovide then
   vim.g.neovide_cursor_vfx_mode = 'railgun'
+  vim.g.neovide_transparency = 0.8
 end
 
 -- [[ Basic Keymaps ]]
